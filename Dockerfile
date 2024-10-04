@@ -8,10 +8,10 @@ RUN apt-get update && \
     gosu \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install jupyter jupyterlab-language-pack-ja-JP
-
 COPY requirements.txt ./
 RUN pip install -r requirements.txt
+
+RUN pip install jupyter jupyterlab-language-pack-ja-JP
 
 EXPOSE 8888
 

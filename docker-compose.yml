@@ -1,0 +1,24 @@
+services:
+  jupyter-server:
+    build: .
+    container_name: jupyter-server
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./workspace:/workspace
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - LOCAL_USER_ID=${LOCAL_USER_ID}
+      - LOCAL_GROUP_ID=${LOCAL_GROUP_ID}
+    command:
+      - jupyter
+      - lab
+      # - server
+      - --ip=0.0.0.0
+      - --port=8888
+      - --no-browser
+      - --allow-root
+      - --NotebookApp.token=''
+      - --NotebookApp.password=''
+      - --ServerApp.disable_check_xsrf=True
+      - --notebook-dir=/workspace

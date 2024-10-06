@@ -1,7 +1,7 @@
 services:
   jupyter-server:
     build:
-      context: .
+      context: ./workspace
       dockerfile: Dockerfile
     container_name: jupyter-server
     ports:

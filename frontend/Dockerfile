@@ -5,6 +5,7 @@ RUN mkdir /frontend
 WORKDIR /frontend
 
 COPY . /frontend
+RUN npm install
 
 ADD entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh

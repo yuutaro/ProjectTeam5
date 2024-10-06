@@ -38,7 +38,8 @@ services:
     environment:
       - LOCAL_USER_ID=${LOCAL_USER_ID}
       - LOCAL_GROUP_ID=${LOCAL_GROUP_ID}
-    command: bash -c "sleep infinity"
+    # command: bash -c "sleep infinity"
+    command: bash -c "npm run dev"
 
 
   backend:
@@ -55,5 +56,5 @@ services:
       - LOCAL_GROUP_ID=${LOCAL_GROUP_ID}
       - FLASK_APP=app.py
       - FLASK_ENV=development
-    command: bash -c "sleep infinity"
-    # command: bash -c "flask run"
+    # command: bash -c "sleep infinity"
+    command: bash -c "flask run --host=0.0.0.0 --port=5000"

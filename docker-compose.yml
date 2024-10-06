@@ -24,6 +24,23 @@ services:
       - --NotebookApp.password=''
       - --ServerApp.disable_check_xsrf=True
       - --notebook-dir=/workspace
+
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/frontend
+    environment:
+      - LOCAL_USER_ID=${LOCAL_USER_ID}
+      - LOCAL_GROUP_ID=${LOCAL_GROUP_ID}
+    command: bash -c "sleep infinity"
+
+
   backend:
     build:
       context: ./backend

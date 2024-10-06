@@ -58,3 +58,17 @@ services:
       - FLASK_ENV=development
     # command: bash -c "sleep infinity"
     command: bash -c "flask run --host=0.0.0.0 --port=5000"
+
+
+  # 今後データベースを使うときのために記載
+  # db:
+  #   image: mysql:8.4
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password
+  #     MYSQL_DATABASE: myapp_database
+  #     MYSQL_USER: user
+  #     MYSQL_PASSWORD: password
+  #   ports:
+  #     - "3307:3306"
+  #   volumes:
+  #     - mysql_data:/var/lib/mysql

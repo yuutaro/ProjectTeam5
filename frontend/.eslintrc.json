@@ -3,7 +3,7 @@
     "next",
     "next/core-web-vitals",
     "eslint:recommended",
-    "plugin:prettier/recommended",
+    // "plugin:prettier/recommended", <- prettierの手動設定と競合した警告をESLintが出すため入れてはいけない
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
@@ -16,4 +16,8 @@
     "import/order": [2, { "alphabetize": { "order": "asc" } }],
     "import/no-unresolved": "off"
   }
+  // "rules"をファイル保存時に適用されるには以下をsettings.jsonに追加
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.eslint": true
+  // },
 }

@@ -1,12 +1,10 @@
-import { AppProps } from 'next/app'
 import React from 'react'
 
 interface DrawerWrapperProps {
-  Component: AppProps['Component']
-  pageProps: AppProps['pageProps']
+  children: React.ReactNode
 }
 
-export const DrawerWrapper = ({ Component, pageProps }: DrawerWrapperProps) => {
+export const DrawerWrapper = (props: DrawerWrapperProps) => {
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -48,7 +46,7 @@ export const DrawerWrapper = ({ Component, pageProps }: DrawerWrapperProps) => {
           </div>
         </div>
         {/* Page content here */}
-        <Component {...pageProps} />
+        {props.children}
       </div>
       <div className="drawer-side">
         <label

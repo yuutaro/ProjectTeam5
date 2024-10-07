@@ -14,17 +14,6 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "import/order": [2, { "alphabetize": { "order": "asc" } }],
-    "import/no-unresolved": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "trailingComma": "all",
-        "endOfLine": "lf",
-        "semi": false,
-        "singleQuote": true,
-        "printWidth": 80,
-        "tabWidth": 2
-      }
-    ]
+    "import/no-unresolved": "off"
   }
 }

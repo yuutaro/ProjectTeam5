@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 // テーマの型定義
-type Theme =
+export type Theme =
   | 'light'
   | 'dark'
   | 'cupcake'
@@ -34,6 +34,42 @@ type Theme =
   | 'dim'
   | 'nord'
   | 'sunset'
+
+// Themeの文字列の配列
+export const themes: Theme[] = [
+  'light',
+  'dark',
+  'cupcake',
+  'bumblebee',
+  'emerald',
+  'corporate',
+  'synthwave',
+  'retro',
+  'cyberpunk',
+  'valentine',
+  'halloween',
+  'garden',
+  'forest',
+  'aqua',
+  'lofi',
+  'pastel',
+  'fantasy',
+  'wireframe',
+  'black',
+  'luxury',
+  'dracula',
+  'cmyk',
+  'autumn',
+  'business',
+  'acid',
+  'lemonade',
+  'night',
+  'coffee',
+  'winter',
+  'dim',
+  'nord',
+  'sunset',
+]
 
 interface ThemeState {
   selectedTheme: Theme

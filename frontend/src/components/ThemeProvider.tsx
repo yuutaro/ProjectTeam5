@@ -7,8 +7,10 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider = (props: ThemeProviderProps) => {
-  const currentTheme = useSelector(
-    (state: RootState) => state.theme.selectedTheme,
+  const currentTheme = useSelector((state: RootState) => state.theme.selectedTheme)
+  return (
+    <div data-theme={currentTheme} className="">
+      {props.children}
+    </div>
   )
-  return <div data-theme={currentTheme}>{props.children}</div>
 }

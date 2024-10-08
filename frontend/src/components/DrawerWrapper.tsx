@@ -34,7 +34,9 @@ export const DrawerWrapper = (props: DrawerWrapperProps) => {
               <li>
                 <a>Navbar Item 2</a>
               </li>
-              <ThemeSelector />
+              <li>
+                <ThemeSelector />
+              </li>
             </ul>
           </div>
         </div>

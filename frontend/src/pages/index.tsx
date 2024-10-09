@@ -11,10 +11,11 @@ const Index: React.FC = () => {
   if (!data) return <div>Loading...</div>
 
   return (
-    <>
+    <div style={{ backgroundImage: `url("/image/東京競馬場_-_panoramio_(4).jpg")` }}>
+      <h1 className="mt-28 text-center text-8xl animate-fade-up animate-once animate-ease-in-out">馬券あたる君</h1>
       <div>health check : {data.healthcheck}</div>
       <div className="p-96"></div>
-    </>
+    </div>
   )
 }
 

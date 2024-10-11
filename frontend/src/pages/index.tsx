@@ -45,13 +45,13 @@ const Index: React.FC = () => {
           />
           <div>
             <h3
-              className={`text-4xl font-bold text-center lg:text-left ${heroTitleInView ? 'animate-fade-left animate-duration-1000' : 'opacity-0'}`}
+              className={`text-4xl font-bold text-center lg:text-left prose ${heroTitleInView ? 'animate-fade-left animate-duration-1000' : 'opacity-0'}`}
               ref={heroTitleRef}
             >
               統計データをもとに競馬をしよう
             </h3>
             <FadeInBottomWrapper>
-              <p className="p-6">
+              <p className="p-6 prose">
                 本サービスは、膨大な統計データをもとに、精度の高い競馬予想を提供するための画期的なサポートツールです。
                 100万件以上の過去レースデータを学習させた高度なAIアルゴリズムにより、これまでのレース結果や騎手・馬のパフォーマンス、
                 コースや天候の影響など、複雑な要因を解析し、ユーザーの予想を強力に支援します。

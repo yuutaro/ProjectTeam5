@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useState } from 'react'
 import { ThemeSelector } from './ThemeSelector'
 
@@ -53,29 +54,35 @@ export const DrawerWrapper = (props: DrawerWrapperProps) => {
           </div>
         </div>
         {/* Page content here */}
-        <div className="btn btn-primary" onClick={handleToggle}></div>
-        {isOpen && <p className=" text-right">true</p>}
         {props.children}
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-        <ul className="menu bg-base-200 min-h-full w-80 p-4">
-          {/* Sidebar content here */}
-          <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
-          </li>
-          <li>
-            <ThemeSelector />
-          </li>
-          <li>
-            <label htmlFor="my-drawer-3" className="btn btn-ghost">
-              Close
-            </label>
-          </li>
-        </ul>
+        <div className="menu bg-base-200 h-full w-80 p-4">
+          {/* sidebar content here */}
+          <div className="flex flex-col justify-between h-full">
+            <div className="flex flex-col space-y-4">
+              <button className="btn bg-base-300 w-full" onClick={handleToggle}>
+                close
+              </button>
+              <div>
+                {/* Linkをblock化すると文字の位置がバグるためdivで囲む */}
+                <Link href="#" className="btn btn-primary mt-1 text-center w-full">
+                  予測開始!!
+                </Link>
+              </div>
+              <div>
+                <Link href="/mypage" className="btn bg-base-300 w-full">
+                  about
+                </Link>
+              </div>
+              <ThemeSelector />
+            </div>
+            <button className="btn bg-base-300 w-full" onClick={handleToggle}>
+              close
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   )

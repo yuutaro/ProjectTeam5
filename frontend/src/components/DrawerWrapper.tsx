@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { ThemeSelector } from './ThemeSelector'
@@ -24,7 +25,7 @@ export const DrawerWrapper = (props: DrawerWrapperProps) => {
       />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
-        <div className="navbar bg-base-300 w-full">
+        <div className="navbar w-full bg-opacity-0 bg-base-100 fixed top-0 z-40">
           <div className="flex-none lg:hidden">
             <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
               <svg
@@ -37,15 +38,27 @@ export const DrawerWrapper = (props: DrawerWrapperProps) => {
               </svg>
             </label>
           </div>
-          <div className="mx-2 flex-1 px-2">Navbar Title</div>
+          {/* Logo */}
+          <div>
+            <Link href="/">
+              <Image src="/svg/Horizontal Lines Horse.svg" width={50} height={50} alt="Horizontal Lines Horse" />
+            </Link>
+          </div>
+          <div className="mx-2 flex-1 px-2">
+            <Link href="/">PacePredict</Link>
+          </div>
           <div className="hidden flex-none lg:block">
-            <ul className="menu menu-horizontal">
+            <ul className="menu menu-horizontal space-x-8">
               {/* Navbar menu content here */}
               <li>
-                <a>Navbar Item 1</a>
+                <Link href="#" className="btn btn-primary w-36">
+                  予測開始!!
+                </Link>
               </li>
               <li>
-                <a>Navbar Item 2</a>
+                <Link href="#" className="btn bg-base-300 w-36">
+                  about
+                </Link>
               </li>
               <li>
                 <ThemeSelector />
@@ -56,7 +69,7 @@ export const DrawerWrapper = (props: DrawerWrapperProps) => {
         {/* Page content here */}
         {props.children}
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side z-50">
         <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
         <div className="menu bg-base-200 h-full w-80 p-4">
           {/* sidebar content here */}

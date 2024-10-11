@@ -12,8 +12,8 @@ const Index: React.FC = () => {
   const { data, error } = useSWR(`${domain}`, fetcher)
 
   const { ref: heroTitleRef, inView: heroTitleInView } = useInView({
-    rootMargin: '-200px', // 100px分だけ上で発火
-    triggerOnce: true,
+    rootMargin: '-100px', // 100px分だけ上で発火
+    triggerOnce: false,
   })
 
   if (error) return <div>An error has occurred.</div>
@@ -23,16 +23,14 @@ const Index: React.FC = () => {
     <>
       {/* キャッチ画像 */}
       <div
-        className="min-h-screen bg-no-repeat bg-top"
+        className="min-h-screen bg-no-repeat bg-cover bg-top"
         style={{
           backgroundImage: 'url(/image/horse-race-2714849_1920.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
         }}
       ></div>
 
       {/* Hero */}
-      <div className="hero bg-base-200 h-screen">
+      <div className="hero bg-base-200 h-auto py-32">
         <div className="hero-content flex-col lg:flex-row">
           {/* <img
             src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
@@ -41,13 +39,13 @@ const Index: React.FC = () => {
           <Image
             src="/image/bremer-rennverein-3283491_1920.jpg"
             alt="Picture of the author"
-            width={500}
-            height={500}
-            className="max-w-sm rounded-lg shadow-2xl"
+            width={300}
+            height={300}
+            className="max-w-sm rounded-lg shadow shadow-black "
           />
           <div>
             <h3
-              className={`text-4xl font-bold ${heroTitleInView ? 'animate-fade-left animate-duration-1000' : 'opacity-0'}`}
+              className={`text-4xl font-bold text-center lg:text-left ${heroTitleInView ? 'animate-fade-left animate-duration-1000' : 'opacity-0'}`}
               ref={heroTitleRef}
             >
               統計データをもとに競馬をしよう

@@ -13,8 +13,8 @@ export const FadeInBottomWrapper: React.FC<FadeInBottomWrapperProps> = ({ childr
   const { ref, inView } = useInView({
     // ref要素が画面に入って100px過ぎたら発火
     rootMargin: '-100px',
-    // 一度だけ発火
-    triggerOnce: true,
+    // 一度だけ発火するかどうか
+    triggerOnce: false,
   })
 
   const fadeInClassName = inView

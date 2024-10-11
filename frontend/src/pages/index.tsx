@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import { useInView } from 'react-intersection-observer'
 import useSWR from 'swr'
+import { FadeInBottomWrapper } from '@/components/animation/FadeInBottomWrapper'
 import { fetcher } from '@/utils'
 
 const Index: React.FC = () => {
@@ -11,11 +12,6 @@ const Index: React.FC = () => {
   const { data, error } = useSWR(`${domain}`, fetcher)
 
   const { ref: heroTitleRef, inView: heroTitleInView } = useInView({
-    rootMargin: '-200px', // 100px分だけ上で発火
-    triggerOnce: true,
-  })
-
-  const { ref: heroContentRef, inView: heroContentInView } = useInView({
     rootMargin: '-200px', // 100px分だけ上で発火
     triggerOnce: true,
   })
@@ -56,17 +52,16 @@ const Index: React.FC = () => {
             >
               統計データをもとに競馬をしよう
             </h3>
-            <p
-              className={`p-6 ${heroContentInView ? 'animate-fade-right animate-duration-1000' : 'opacity-0'}`}
-              ref={heroContentRef}
-            >
-              本サービスは、膨大な統計データをもとに、精度の高い競馬予想を提供するための画期的なサポートツールです。
-              100万件以上の過去レースデータを学習させた高度なAIアルゴリズムにより、これまでのレース結果や騎手・馬のパフォーマンス、
-              コースや天候の影響など、複雑な要因を解析し、ユーザーの予想を強力に支援します。
-              AIは継続的に学習し、新しいデータやトレンドを取り入れながら、さらに正確な予測を提供。
-              初心者からプロの競馬ファンまで、誰でも簡単に利用できる直感的なインターフェースで、
-              あなたの馬券戦略を次のレベルへと引き上げます。
-            </p>
+            <FadeInBottomWrapper>
+              <p className="p-6">
+                本サービスは、膨大な統計データをもとに、精度の高い競馬予想を提供するための画期的なサポートツールです。
+                100万件以上の過去レースデータを学習させた高度なAIアルゴリズムにより、これまでのレース結果や騎手・馬のパフォーマンス、
+                コースや天候の影響など、複雑な要因を解析し、ユーザーの予想を強力に支援します。
+                AIは継続的に学習し、新しいデータやトレンドを取り入れながら、さらに正確な予測を提供。
+                初心者からプロの競馬ファンまで、誰でも簡単に利用できる直感的なインターフェースで、
+                あなたの馬券戦略を次のレベルへと引き上げます。
+              </p>
+            </FadeInBottomWrapper>
             <div className="flex justify-center">
               <Link href="/form" className="btn btn-primary mx-auto">
                 予測開始!!

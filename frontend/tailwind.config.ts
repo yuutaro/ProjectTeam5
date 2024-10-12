@@ -12,6 +12,9 @@ const config: Config = {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
       },
+      fontFamily: {
+        notosans: ['Noto Sans JP', 'sans-serif'],
+      },
     },
   },
   plugins: [require('daisyui'), require('tailwindcss-animated'), require('@tailwindcss/typography')],

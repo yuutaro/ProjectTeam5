@@ -1,3 +1,4 @@
+from curses import A_ALTCHARSET
 from flask import Flask
 from flask_cors import CORS
 
@@ -6,11 +7,11 @@ CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://localh
 
 @app.route('/')
 def index():
-    return {"healthcheck": "ok"}
+  return {"healthcheck": "ok"}
 
 @app.route('/healthcheck')
 def healthcheck():
-    return {"healthcheck": "ok"}
+  return {"healthcheck": "ok"}
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+  app.run(host='0.0.0.0', port=5000)

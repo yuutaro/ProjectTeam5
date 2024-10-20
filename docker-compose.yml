@@ -25,7 +25,6 @@ services:
       - --ServerApp.disable_check_xsrf=True
       - --notebook-dir=/workspace
 
-
   frontend:
     build:
       context: ./frontend
@@ -40,7 +39,6 @@ services:
       - LOCAL_GROUP_ID=${LOCAL_GROUP_ID}
     # command: bash -c "sleep infinity"
     command: bash -c "npm run dev"
-
 
   backend:
     build:
@@ -58,7 +56,6 @@ services:
       - FLASK_ENV=development
     # command: bash -c "sleep infinity"
     command: bash -c "flask run --host=0.0.0.0 --port=5000"
-
 
   # 今後データベースを使うときのために記載
   # db:

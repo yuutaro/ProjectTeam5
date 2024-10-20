@@ -5,7 +5,7 @@
     "eslint:recommended",
     // "plugin:prettier/recommended", <- prettierの手動設定と競合した警告をESLintが出すため入れてはいけない
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
+    // "plugin:react-hooks/recommended",　<- useEffectの第二引数に空配列を渡すと警告が出るためoff
     // "plugin:@typescript-eslint/recommended", <- require()ができなくなるためoff
     "plugin:import/recommended",
     "plugin:import/typescript",

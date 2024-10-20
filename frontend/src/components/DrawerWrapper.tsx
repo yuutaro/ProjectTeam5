@@ -1,7 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { ThemeSelector } from './ThemeSelector'
+import { fetchServerHealth } from '@/redux/slices/serverHealthSlice'
+import { AppDispatch, RootState } from '@/redux/store'
 
 interface DrawerWrapperProps {
   children: React.ReactNode
@@ -9,10 +12,32 @@ interface DrawerWrapperProps {
 
 export const DrawerWrapper = (props: DrawerWrapperProps) => {
   const [isOpen, setIsOpen] = useState(false) // ドロワーの開閉状態を管理する state
+  const serverHealth = useSelector((state: RootState) => state.serverHealth) // サーバーの状態を取得
+  const dispatch = useDispatch<AppDispatch>()
+  const [statusColor, setStatusColor] = useState('') // statusコードごとに色を変えるために使用
 
   const handleToggle = () => {
     setIsOpen(!isOpen) // ドロワーの開閉状態を切り替える
   }
+
+  // 実行されると/healthcheckにgetリクエストを送り、サーバーの状態を取得する
+  const getServerStatus = () => {
+    dispatch(fetchServerHealth())
+  }
+
+  useEffect(() => {
+    // statusコードによって色を変える
+    if (serverHealth.status === 200) {
+      setStatusColor('text-green-700')
+    } else {
+      setStatusColor('text-red-700')
+    }
+  }, [serverHealth.status])
+
+  // ページ読み込み時にサーバーの状態を取得する
+  useEffect(() => {
+    getServerStatus()
+  }, [])
 
   return (
     <div className="drawer">
@@ -48,8 +73,19 @@ export const DrawerWrapper = (props: DrawerWrapperProps) => {
             <Link href="/">PacePredict</Link>
           </div>
           <div className="hidden flex-none lg:block">
-            <ul className="menu menu-horizontal space-x-8">
+            <ul className="menu menu-horizontal space-x-8 disabled">
               {/* Navbar menu content here */}
+              <li>
+                {/* サーバーの状態を表示する項目 */}
+                <div className="bg-base-100">
+                  <p>サーバーステータス</p>
+                  {/* ステータスコード */}
+                  <p className={statusColor}>{serverHealth.status}</p>
+                  <button onClick={getServerStatus} className="btn btn-primary">
+                    チェック
+                  </button>
+                </div>
+              </li>
               <li>
                 <Link href="#" className="btn btn-primary w-36">
                   予測開始!!

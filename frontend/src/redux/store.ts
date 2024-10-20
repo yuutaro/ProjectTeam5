@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
+import serverHealthReducer from './slices/serverHealthSlice'
 import themeReducer from './slices/themeSlice'
 
 export const store = configureStore({
   reducer: {
-    theme: themeReducer, // themeSlice の reducer を登録
+    theme: themeReducer,
+    serverHealth: serverHealthReducer,
   },
 })
 

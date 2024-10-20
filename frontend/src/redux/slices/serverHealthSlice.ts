@@ -2,22 +2,34 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 interface ServerHealthState {
-  data: object | null
   loading: boolean
-  error: string | null
+  data: object | null
+  status: number | null
+  code: string | null
 }
 
 const initialState: ServerHealthState = {
-  data: {},
   loading: false,
-  error: null,
+  data: null,
+  status: null,
+  code: null,
 }
 
-export const fetchServerHealth = createAsyncThunk('serverHealth/fetchServerHealth', async () => {
-  const response = await axios.get('/health')
-  // successなら response.data = { healthcheck: 'ok' }
-  return response.data
-})
+export const fetchServerHealth = createAsyncThunk<{ data: object; status: number }, void>(
+  'serverHealth/fetchServerHealth',
+  async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/healthcheck')
+      // ↑ {"healthcheck":"ok"} が返ってくる
+      return { data: response.data, status: response.status, code: null }
+    } catch (axiosError: any) {
+      if (!axiosError.response) {
+        throw axiosError
+      }
+      return { data: axiosError.data, status: axiosError.response.status, code: axiosError.code }
+    }
+  },
+)
 
 const serverHealthSlice = createSlice({
   name: 'serverHealth',
@@ -28,12 +40,16 @@ const serverHealthSlice = createSlice({
       state.loading = true
     })
     builder.addCase(fetchServerHealth.fulfilled, (state, action) => {
-      state.data = action.payload
       state.loading = false
+      state.data = action.payload.data
+      state.status = action.payload.status
     })
-    builder.addCase(fetchServerHealth.rejected, (state, action) => {
-      state.error = action.error.message
+    builder.addCase(fetchServerHealth.rejected, (state, action: any) => {
+      // typescriptが action.payloadにdataが存在しないというのでanyを書いた(改善要？)
       state.loading = false
+      state.data = action.payload?.data
+      state.status = action.payload?.status
+      state.code = action.payload?.code
     })
   },
 })

@@ -17,7 +17,14 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('daisyui'), require('tailwindcss-animated'), require('@tailwindcss/typography')],
+  plugins: [
+    require('daisyui'),
+    require('tailwindcss-animated'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms'),
+  ],
   daisyui: {
     themes: [
       'light',

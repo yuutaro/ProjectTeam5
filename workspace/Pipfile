@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+matplotlib = "*"
+pandas = "*"
+scikit-learn = "*"
+tensorflow = "*"
+keras = "*"
+statsmodels = "*"
+seaborn = "*"
+scipy = "*"
+numpy = "*"
+jupyter = "*"
+ipykernel = "*"
+tensorflow-probability = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"

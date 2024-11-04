@@ -15,6 +15,9 @@ const initialState: ServerHealthState = {
   code: null,
 }
 
+// createAsyncThunkはアクション関数を作る関数。
+// 第二引数のコールバック関数の引数には、アクション関数の引数が渡ってきて、
+// 返り値はextraReducersのaction.payloadにわたってくる
 export const fetchServerHealth = createAsyncThunk<{ data: object; status: number }, void>(
   'serverHealth/fetchServerHealth',
   async () => {
@@ -31,6 +34,8 @@ export const fetchServerHealth = createAsyncThunk<{ data: object; status: number
   },
 )
 
+// createAsynkThunkを用いた場合のreducerはextraReducerに記載。
+//　Promiseオブジェクトの状態で条件分岐する。
 const serverHealthSlice = createSlice({
   name: 'serverHealth',
   initialState: initialState,

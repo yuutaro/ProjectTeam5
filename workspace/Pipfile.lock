@@ -2292,6 +2292,9 @@
             "version": "==0.37.1"
         },
         "tensorflow-probability": {
+            "extras": [
+                "tf"
+            ],
             "hashes": [
                 "sha256:8c1774683e38359dbcaf3697e79b7e6a4e69b9c7b3679e78ee18f43e59e5759b"
             ],
@@ -2314,6 +2317,13 @@
             ],
             "markers": "python_version >= '3.8'",
             "version": "==0.18.1"
+        },
+        "tf-keras": {
+            "hashes": [
+                "sha256:c431d04027eef790fcd3261cf7fdf93eb74f3cb32e05078b57b7f5a54bd53262",
+                "sha256:ebf744519b322afead33086a2aba872245473294affd40973694f3eb7c7ad77d"
+            ],
+            "version": "==2.18.0"
         },
         "threadpoolctl": {
             "hashes": [

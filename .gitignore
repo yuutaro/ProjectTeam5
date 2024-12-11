@@ -1,0 +1,5 @@
+# MacOSで生成されるファイルを無視
+.DS_Store
+
+# GCI関連を無視
+references/GCI/** */

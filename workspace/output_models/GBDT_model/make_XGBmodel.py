@@ -1,5 +1,4 @@
 import pandas as pd
-from sklearn.impute import SimpleImputer
 import xgboost as xgb
 import numpy as np
 
@@ -26,7 +25,7 @@ xgb_model = xgb.XGBRegressor(
     n_estimators=50,       # ツリーの本数
     learning_rate=0.1,     # 学習率
     max_depth=5,           # ツリーの深さ
-    random_state=42,
+    random_state=0,
 )
 
 # 4. モデルのトレーニング

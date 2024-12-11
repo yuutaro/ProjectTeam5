@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.impute import SimpleImputer
 from sklearn.metrics import mean_squared_error
 import xgboost as xgb
+import time 
 
 # 1. データの読み込み
 data = pd.read_csv("../data/format_data.csv")  # 入力データをCSVから読み込む
@@ -31,8 +32,12 @@ xgb_model = xgb.XGBRegressor(
     random_state=42,       # 乱数シード
 )
 
+start_time = time.time()
+
 # 6. モデルのトレーニング
 xgb_model.fit(X, y)  # モデルを学習
+
+end_time = time.time()
 
 # 7. タイムを予測
 predicted_times = xgb_model.predict(X)  # 予測タイムを計算
@@ -44,6 +49,6 @@ comparison = pd.DataFrame({
 })
 
 mean_squared_error(y, predicted_times)
-
+print(f"Training Time: {end_time - start_time} seconds")
 
 

@@ -2,10 +2,10 @@ import pandas as pd
 import xgboost as xgb
 import numpy as np
 
-# 1. データの読み込み
+# データの読み込み
 data = pd.read_csv("../../team2/data/format_data.csv")
 
-# 2. 特徴量とターゲットの設定
+# 特徴量とターゲットの設定
 df = pd.DataFrame(data)
 df = df[["Kinryou","Time_x","Ninki",
 "Race Number","Distance","Weight","Weight Change",
@@ -20,7 +20,7 @@ y = df['Time_x']
 X = X.apply(pd.to_numeric, errors='coerce').astype(np.float64)
 y = y.apply(pd.to_numeric, errors='coerce').astype(np.float64)
 
-# 3. XGBoostモデルの構築
+# XGBoostモデルの構築
 xgb_model = xgb.XGBRegressor(
     n_estimators=50,       # ツリーの本数
     learning_rate=0.1,     # 学習率
@@ -28,9 +28,9 @@ xgb_model = xgb.XGBRegressor(
     random_state=0,
 )
 
-# 4. モデルのトレーニング
+# モデルのトレーニング
 xgb_model.fit(X, y)
 
-# 5. モデルをファイルとして保存
+# モデルをファイルとして保存
 xgb_model.save_model("xgb_model.json")
 print("モデルを保存しました: xgb_model.json")
